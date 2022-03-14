@@ -30,7 +30,7 @@ const batteries = [
   ];
 
 router.get('/batteries', (req, res) => {
-    res.header('Access-Control-Allow-Origin', '208.76.87.109');
+    res.header('Access-Control-Allow-Origin', 'http://jacobrobinett.com');
     // res.json({
     //     'Hello': 'hi'
     // });
