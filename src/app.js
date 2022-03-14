@@ -9,23 +9,42 @@ const router = express.Router();
 const batteries = [
     {
         id: 1,
-        brand: 'Hart',
-        name: 'Hart 20V Battery Mount'
+        brand: "Hart",
+        type: "Battery",
+        image: "images/hart_battery.png",
+        title: "Hart 20V Battery Holder",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/383881200540",
+        description: "Very important product information."
     },
     { 
         id: 2,
-        brand: 'Craftsman',
-        name: 'Craftman V20* Battery Mount'
+        brand: "Craftsman",
+        type: "Battery",
+        image: "images/craftsman_battery.png",
+        title: "Craftsman 20V Battery Holder",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/384421539579",
+        description: "Very important product information."
     },
     {
         id: 3,
-        brand: 'DeWalt',
-        name: 'DEWALT 20V Battery Mount'
+        brand: "DeWalt",
+        type: "Battery",
+        image: "images/dewalt_battery.png",
+        title: "DeWalt 20V Battery Holder Mount & Dock",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/383881200540",
+        description: "Very important product information."
     },
     { 
-        id: 4,
-        brand: 'Black & Decker',
-        name: 'Black & Decker 20V Battery Mount'
+        brand: "Black & Decker",
+        type: "Battery",
+        image: "images/bd_battery.png",
+        title: "Black & Decker 20V Battery Holder Mount & Dock",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/383899226414",
+        description: "Very important product information."
     },
   ];
 
