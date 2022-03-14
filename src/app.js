@@ -49,7 +49,7 @@ const batteries = [
   ];
 
 router.get('/batteries', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'http://jacobrobinett.com');
     // res.json({
     //     'Hello': 'hi'
     // });
@@ -57,7 +57,7 @@ router.get('/batteries', (req, res) => {
 });
 
 router.get('/batteries/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'http://jacobrobinett.com');
     let id = req.params.id;
     let result = batteries.find((item) => item.id == id);
 
@@ -65,7 +65,7 @@ router.get('/batteries/:id', (req, res) => {
 });
 
 router.get('/test', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'http://jacobrobinett.com');
     res.json({
         'Hello': 'hi'
     });
