@@ -30,6 +30,7 @@ const batteries = [
   ];
 
 router.get('/batteries', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     // res.json({
     //     'Hello': 'hi'
     // });
