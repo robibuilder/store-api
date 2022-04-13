@@ -193,6 +193,14 @@ router.get('/tools/:id', (req, res) => {
     res.status(200).json(result);
 });
 
+// Endpoint to get featured
+//
+router.get('/featured', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+
+    res.status(200).json(featured);
+});
+
 // Endpoint to get an individual featured by ID
 //
 router.get('/featured/:id', (req, res) => {
