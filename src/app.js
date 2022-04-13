@@ -203,9 +203,9 @@ router.get('/featured', (req, res) => {
     let three = batteries.find((item) => item.id == 3);
 
     const result = {
-        batteries.find((item) => item.id == 4),
-        tools.find((item) => item.id == 2),
-        batteries.find((item) => item.id == 3)
+        one,
+        two,
+        three
     }
 
     res.status(200).json(result);
