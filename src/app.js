@@ -193,20 +193,12 @@ router.get('/tools/:id', (req, res) => {
     res.status(200).json(result);
 });
 
-// Endpoint to get featured products
+// Endpoint to get an individual featured by ID
 //
-router.get('/featured', (req, res) => {
+router.get('/featured/:id', (req, res) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     let id = req.params.id;
-    let one = batteries.find((item) => item.id == 4);
-    let two = tools.find((item) => item.id == 2);
-    let three = batteries.find((item) => item.id == 3);
-
-    const result = {
-        one,
-        two,
-        three
-    }
+    let result = featured.find((item) => item.id == id);
 
     res.status(200).json(result);
 });
