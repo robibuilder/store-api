@@ -10,7 +10,7 @@ const batteries = [
     {
         id: 1,
         brand: "Hart",
-        type: "batteries",
+        type: "Battery",
         image: "images/hart_battery.png",
         title: "Hart 20V Battery Holder",
         price: "$4.99",
@@ -20,7 +20,7 @@ const batteries = [
     { 
         id: 2,
         brand: "Craftsman",
-        type: "batteries",
+        type: "Battery",
         image: "images/craftsman_battery.png",
         title: "Craftsman 20V Battery Holder",
         price: "$4.99",
@@ -30,7 +30,7 @@ const batteries = [
     {
         id: 3,
         brand: "DeWalt",
-        type: "batteries",
+        type: "Battery",
         image: "images/dewalt_battery.png",
         title: "DeWalt 20V Battery Holder",
         price: "$4.99",
@@ -40,7 +40,7 @@ const batteries = [
     { 
         id: 4,
         brand: "Black & Decker",
-        type: "batteries",
+        type: "Battery",
         image: "images/bd_battery.png",
         title: "Black & Decker 20V Battery Holder",
         price: "$4.99",
@@ -50,7 +50,7 @@ const batteries = [
     { 
         id: 5,
         brand: "Bauer",
-        type: "batteries",
+        type: "Battery",
         image: "images/bauer_battery.png",
         title: "Bauer 20V Battery Holder",
         price: "$4.99",
@@ -63,9 +63,9 @@ const batteries = [
     {
         id: 1,
         brand: "Hart",
-        type: "tools",
+        type: "Tool",
         image: "images/hart_tool.png",
-        title: "Hart 20V Tool Mount",
+        title: "Hart Tool Mount",
         price: "$4.99",
         link: "https://www.ebay.com/itm/384011739714",
         description: "Very important product information."
@@ -73,9 +73,9 @@ const batteries = [
     { 
         id: 2,
         brand: "Craftsman",
-        type: "tools",
+        type: "Tool",
         image: "images/craftsman_tool.png",
-        title: "Craftsman 20V Tool Mount",
+        title: "Craftsman Tool Mount",
         price: "$4.99",
         link: "https://www.ebay.com/itm/384011766136",
         description: "Very important product information."
@@ -83,9 +83,9 @@ const batteries = [
     {
         id: 3,
         brand: "DeWalt",
-        type: "tools",
+        type: "Tool",
         image: "images/dewalt_tool.png",
-        title: "DeWalt 20V Tool Mount",
+        title: "DeWalt Tool Mount",
         price: "$4.99",
         link: "https://www.ebay.com/itm/384011766136",
         description: "Very important product information."
@@ -93,9 +93,9 @@ const batteries = [
     { 
         id: 4,
         brand: "Black & Decker",
-        type: "tools",
+        type: "Tool",
         image: "images/bd_tool.png",
-        title: "Black & Decker Tool Mount",
+        title: "Black & Decker tool Mount",
         price: "$4.99",
         link: "https://www.ebay.com/itm/384421528132",
         description: "Very important product information."
@@ -115,7 +115,7 @@ const batteries = [
 // Endpoint to get all batteries
 //
 router.get('/batteries', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
 
     res.status(200).json(batteries);
 });
@@ -123,7 +123,7 @@ router.get('/batteries', (req, res) => {
 // Endpoint to get an individual battery by ID
 //
 router.get('/batteries/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     let id = req.params.id;
     let result = batteries.find((item) => item.id == id);
 
@@ -133,7 +133,7 @@ router.get('/batteries/:id', (req, res) => {
 // Endpoint to get all tools
 //
 router.get('/tools', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
 
     res.status(200).json(tools);
 });
@@ -141,7 +141,7 @@ router.get('/tools', (req, res) => {
 // Endpoint to get an individual tool by ID
 //
 router.get('/tools/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     let id = req.params.id;
     let result = tools.find((item) => item.id == id);
 
@@ -151,7 +151,7 @@ router.get('/tools/:id', (req, res) => {
 // Endpoint to get featured products
 //
 router.get('/featured', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     let id = req.params.id;
     let one = batteries.find((item) => item.id == 4);
     let two = tools.find((item) => item.id = 2);
@@ -169,7 +169,7 @@ router.get('/featured', (req, res) => {
 // Endpoint for testing only
 //
 router.get('/test', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     res.json({
         'Hello': 'hi'
     });
