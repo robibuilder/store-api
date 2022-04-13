@@ -115,7 +115,7 @@ const batteries = [
 // Endpoint to get all batteries
 //
 router.get('/batteries', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
 
     res.status(200).json(batteries);
 });
@@ -123,7 +123,7 @@ router.get('/batteries', (req, res) => {
 // Endpoint to get an individual battery by ID
 //
 router.get('/batteries/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     let id = req.params.id;
     let result = batteries.find((item) => item.id == id);
 
@@ -133,7 +133,7 @@ router.get('/batteries/:id', (req, res) => {
 // Endpoint to get all tools
 //
 router.get('/tools', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
 
     res.status(200).json(tools);
 });
@@ -141,7 +141,7 @@ router.get('/tools', (req, res) => {
 // Endpoint to get an individual tool by ID
 //
 router.get('/tools/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     let id = req.params.id;
     let result = tools.find((item) => item.id == id);
 
@@ -151,7 +151,7 @@ router.get('/tools/:id', (req, res) => {
 // Endpoint to get featured products
 //
 router.get('/featured', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     let id = req.params.id;
     let one = batteries.find((item) => item.id == 4);
     let two = tools.find((item) => item.id = 2);
@@ -169,7 +169,7 @@ router.get('/featured', (req, res) => {
 // Endpoint for testing only
 //
 router.get('/test', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     res.json({
         'Hello': 'hi'
     });
