@@ -16,7 +16,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/383881200540",
         description: "Very important product information.",
-        featured: "true",
         active: "true"
     },
     { 
@@ -28,7 +27,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/384421539579",
         description: "Very important product information.",
-        featured: "false",
         active: "true"
     },
     {
@@ -40,7 +38,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/383881200540",
         description: "Very important product information.",
-        featured: "true",
         active: "true"
     },
     { 
@@ -52,7 +49,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/383899226414",
         description: "Very important product information.",
-        featured: "false",
         active: "true"
     },
     { 
@@ -64,7 +60,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/384040356820",
         description: "Very important product information.",
-        featured: "false",
         active: "true"
     },
   ];
@@ -79,7 +74,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/384011739714",
         description: "Very important product information.",
-        featured: "false",
         active: "true"
     },
     { 
@@ -91,7 +85,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/384011766136",
         description: "Very important product information.",
-        featured: "false",
         active: "true"
     },
     {
@@ -103,7 +96,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/384011766136",
         description: "Very important product information.",
-        featured: "false",
         active: "true"
     },
     { 
@@ -115,7 +107,6 @@ const batteries = [
         price: "$4.99",
         link: "https://www.ebay.com/itm/384421528132",
         description: "Very important product information.",
-        featured: "true",
         active: "true"
     },
     // { 
@@ -129,6 +120,42 @@ const batteries = [
     //     description: "Very important product information."
     // },
   ];
+
+  const featured = [
+    {
+        id: 1,
+        brand: "Hart",
+        type: "Tool",
+        image: "images/hart_tool.png",
+        title: "Hart Tool Mount",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/384011739714",
+        description: "Very important product information.",
+        active: "true"
+    },
+    {
+        id: 3,
+        brand: "DeWalt",
+        type: "Battery",
+        image: "images/dewalt_battery.png",
+        title: "DeWalt 20V Battery Holder",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/383881200540",
+        description: "Very important product information.",
+        active: "true"
+    },
+    { 
+        id: 4,
+        brand: "Black & Decker",
+        type: "Tool",
+        image: "images/bd_tool.png",
+        title: "Black & Decker tool Mount",
+        price: "$4.99",
+        link: "https://www.ebay.com/itm/384421528132",
+        description: "Very important product information.",
+        active: "true"
+    },
+ ];
 
 // Endpoint to get all batteries
 //
@@ -172,13 +199,13 @@ router.get('/featured', (req, res) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
     let id = req.params.id;
     let one = batteries.find((item) => item.id == 4);
-    let two = tools.find((item) => item.id = 2);
-    let three = batteries.find((item) => item.id = 3);
+    let two = tools.find((item) => item.id == 2);
+    let three = batteries.find((item) => item.id == 3);
 
     const result = {
-        one,
-        two,
-        three
+        batteries.find((item) => item.id == 4),
+        tools.find((item) => item.id == 2),
+        batteries.find((item) => item.id == 3)
     }
 
     res.status(200).json(result);
