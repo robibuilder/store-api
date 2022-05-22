@@ -190,7 +190,8 @@ const batteries = [
 
  router.get("/newtest", async (req, res) => {
     let result = await db.executeQuery("SELECT * FROM batteries");
-    res.send(result);
+    res.status(200).json(result);
+    //res.send(result);
 });
 
 // Endpoint to get all batteries
