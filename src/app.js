@@ -194,23 +194,36 @@ const batteries = [
     res.send(result);
 });
 
-// Endpoint to get all batteries
-//
-router.get('/batteries', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-
-    res.status(200).json(batteries);
+router.get("/batteries", async (req, res) => {
+    let result = await db.executeQuery("SELECT * FROM batteries");
+    //res.status(200).json(result);
+    res.send(result);
 });
 
-// Endpoint to get an individual battery by ID
-//
-router.get('/batteries/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-    let id = req.params.id;
-    let result = batteries.find((item) => item.id == id);
-
-    res.status(200).json(result);
+router.get("/batteries/:id", async (req, res) => {
+    let result = await db.executeQuery("SELECT * FROM batteries WHERE id = ?", [req.params.id]);
+    //res.status(200).json(result);
+    res.send(result);
 });
+
+
+// // Endpoint to get all batteries
+// //
+// router.get('/batteries', (req, res) => {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+
+//     res.status(200).json(batteries);
+// });
+
+// // Endpoint to get an individual battery by ID
+// //
+// router.get('/batteries/:id', (req, res) => {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+//     let id = req.params.id;
+//     let result = batteries.find((item) => item.id == id);
+
+//     res.status(200).json(result);
+// });
 
 // Endpoint to get all tools
 //
