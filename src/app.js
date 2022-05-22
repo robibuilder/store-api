@@ -188,7 +188,7 @@ const batteries = [
     },
  ];
 
- app.get("/newtest", async (req, res) => {
+ router.get("/newtest", async (req, res) => {
     let result = await db.executeQuery("SELECT * FROM batteries");
     res.send(result);
 });
