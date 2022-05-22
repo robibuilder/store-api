@@ -37,64 +37,6 @@ db.executeQuery = (query, queryParams) => {
 	})
 };
 
-
-  const tools = [
-    {
-        id: 1,
-        brand: "Hart",
-        type: "Tool",
-        image: "images/hart_tool.png",
-        title: "Hart Tool Mount",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/384011739714",
-        description: "Very important product information.",
-        active: "true"
-    },
-    { 
-        id: 2,
-        brand: "Craftsman",
-        type: "Tool",
-        image: "images/craftsman_tool.png",
-        title: "Craftsman Tool Mount",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/384011766136",
-        description: "Very important product information.",
-        active: "true"
-    },
-    {
-        id: 3,
-        brand: "DeWalt",
-        type: "Tool",
-        image: "images/dewalt_tool.png",
-        title: "DeWalt Tool Mount",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/384011766136",
-        description: "Very important product information.",
-        active: "true"
-    },
-    { 
-        id: 4,
-        brand: "Black & Decker",
-        type: "Tool",
-        image: "images/bd_tool.png",
-        title: "Black & Decker tool Mount",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/384421528132",
-        description: "Very important product information.",
-        active: "true"
-    },
-    // { 
-    //     id: 5,
-    //     brand: "Bauer",
-    //     type: "Tool",
-    //     image: "images/bauer_tool.png",
-    //     title: "Bauer 20V Battery Holder",
-    //     price: "$4.99",
-    //     link: "https://www.ebay.com/itm/384040356820",
-    //     description: "Very important product information."
-    // },
-  ];
-
   const featured = [
     {
         id: 1,
@@ -155,10 +97,18 @@ router.get("/batteries/:id", async (req, res) => {
 
 // Endpoint to get all tools
 //
-router.get('/tools', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+router.get("/tools", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    try {
+        let result = await db.executeQuery("SELECT * FROM tools");
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
 
-    res.status(200).json(tools);
 });
 
 // Endpoint to get an individual tool by ID
