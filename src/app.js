@@ -1,6 +1,6 @@
 const express = require('express');
 const serverless = require('serverless-http');
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 
 const app = express();
