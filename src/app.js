@@ -1,10 +1,41 @@
-
-
 const express = require('express');
 const serverless = require('serverless-http');
+const mysql = require("mysql");
+
 
 const app = express();
 const router = express.Router();
+
+const db = mysql.createConnection({
+    host: "208.76.87.109",
+    user: "aogmapax_owner",
+    password: "secret", 
+    database: "aogmapax_products_new", 
+    port: "3306"
+  });
+
+// Connect to MySQL
+
+db.connect((err) => {
+  if (err) {
+    throw err;
+    // console.log("ERROR");
+    // return;
+  }
+  console.log("MySql Connected");
+});
+
+db.executeQuery = (query, queryParams) => {
+	return new Promise((resolve, reject) => {
+		db.query(query, queryParams, (error, results) => {
+			if (error) {
+				reject(error)
+				return
+			}
+			resolve(results)
+		})
+	})
+};
 
 const batteries = [
     {
@@ -156,6 +187,11 @@ const batteries = [
         active: "true"
     },
  ];
+
+ app.get("/newtest", async (req, res) => {
+    let result = await db.executeQuery("SELECT * FROM batteries");
+    res.send(result);
+});
 
 // Endpoint to get all batteries
 //
