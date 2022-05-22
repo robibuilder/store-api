@@ -108,7 +108,6 @@ router.get("/tools", async (req, res) => {
         console.log(req.body)
         res.status(500).json({error: e})
     }
-
 });
 
 // Endpoint to get an individual tool by ID
@@ -128,30 +127,34 @@ router.get("/tools/:id", async (req, res) => {
 
 // Endpoint to get featured
 //
-router.get('/featured', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-
-    res.status(200).json(featured);
+router.get("/featured", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    try {
+        let result = await db.executeQuery("SELECT * FROM featured");
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
 });
 
 // Endpoint to get an individual featured by ID
 //
-router.get('/featured/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-    let id = req.params.id;
-    let result = featured.find((item) => item.id == id);
-
-    res.status(200).json(result);
+router.get("/featured/:id", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    try {
+        let result = await db.executeQuery("SELECT * FROM featured WHERE id = ?", [req.params.id]);
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
 });
 
-// Endpoint for testing only
-//
-router.get('/test', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-    res.json({
-        'Hello': 'hi'
-    });
-});
 
 app.use('/.netlify/functions/app', router);
 module.exports = app;
