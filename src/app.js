@@ -37,63 +37,6 @@ db.executeQuery = (query, queryParams) => {
 	})
 };
 
-const batteries = [
-    {
-        id: 1,
-        brand: "Hart",
-        type: "Battery",
-        image: "images/hart_battery.png",
-        title: "Hart 20V Battery Holder",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/383881200540",
-        description: "Very important product information.",
-        active: "true"
-    },
-    { 
-        id: 2,
-        brand: "Craftsman",
-        type: "Battery",
-        image: "images/craftsman_battery.png",
-        title: "Craftsman 20V Battery Holder",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/384421539579",
-        description: "Very important product information.",
-        active: "true"
-    },
-    {
-        id: 3,
-        brand: "DeWalt",
-        type: "Battery",
-        image: "images/dewalt_battery.png",
-        title: "DeWalt 20V Battery Holder",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/383881200540",
-        description: "Very important product information.",
-        active: "true"
-    },
-    { 
-        id: 4,
-        brand: "Black & Decker",
-        type: "Battery",
-        image: "images/bd_battery.png",
-        title: "Black & Decker 20V Battery Holder",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/383899226414",
-        description: "Very important product information.",
-        active: "true"
-    },
-    { 
-        id: 5,
-        brand: "Bauer",
-        type: "Battery",
-        image: "images/bauer_battery.png",
-        title: "Bauer 20V Battery Holder",
-        price: "$4.99",
-        link: "https://www.ebay.com/itm/384040356820",
-        description: "Very important product information.",
-        active: "true"
-    },
-  ];
 
   const tools = [
     {
@@ -188,22 +131,19 @@ const batteries = [
     },
  ];
 
- router.get("/newtest", async (req, res) => {
-    let result = await db.executeQuery("SELECT * FROM batteries");
-    //res.status(200).json(result);
-    res.send(result);
-});
-
+// Endpoint to get all batteries
 router.get("/batteries", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     let result = await db.executeQuery("SELECT * FROM batteries");
     //res.status(200).json(result);
     res.send(result);
 });
 
+// Endpoint to get an individual battery by ID
 router.get("/batteries/:id", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     try {
         let result = await db.executeQuery("SELECT * FROM batteries WHERE id = ?", [req.params.id]);
-        //res.status(200).json(result);
         res.send(result);
     } catch (e) {
         // console.log(req)
@@ -212,25 +152,6 @@ router.get("/batteries/:id", async (req, res) => {
         res.status(500).json({error: e})
     }
 });
-
-
-// // Endpoint to get all batteries
-// //
-// router.get('/batteries', (req, res) => {
-//     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-
-//     res.status(200).json(batteries);
-// });
-
-// // Endpoint to get an individual battery by ID
-// //
-// router.get('/batteries/:id', (req, res) => {
-//     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-//     let id = req.params.id;
-//     let result = batteries.find((item) => item.id == id);
-
-//     res.status(200).json(result);
-// });
 
 // Endpoint to get all tools
 //
