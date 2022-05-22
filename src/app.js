@@ -201,9 +201,16 @@ router.get("/batteries", async (req, res) => {
 });
 
 router.get("/batteries/:id", async (req, res) => {
-    let result = await db.executeQuery("SELECT * FROM batteries WHERE id = ?", [req.params.id]);
-    //res.status(200).json(result);
-    res.send(result);
+    try {
+        let result = await db.executeQuery("SELECT * FROM batteries WHERE id = ?", [req.params.id]);
+        //res.status(200).json(result);
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
 });
 
 
