@@ -113,12 +113,17 @@ router.get("/tools", async (req, res) => {
 
 // Endpoint to get an individual tool by ID
 //
-router.get('/tools/:id', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
-    let id = req.params.id;
-    let result = tools.find((item) => item.id == id);
-
-    res.status(200).json(result);
+router.get("/tools/:id", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
+    try {
+        let result = await db.executeQuery("SELECT * FROM tools WHERE id = ?", [req.params.id]);
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
 });
 
 // Endpoint to get featured
