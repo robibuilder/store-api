@@ -1,6 +1,6 @@
 const express = require('express');
 const serverless = require('serverless-http');
-const mysql = require("serverless-mysql");
+const mysql = require("mysql");
 
 
 const app = express();
@@ -258,5 +258,5 @@ router.get('/test', (req, res) => {
 });
 
 app.use('/.netlify/functions/app', router);
-
+module.exports = app;
 module.exports.handler = serverless(app);
