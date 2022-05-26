@@ -145,7 +145,7 @@ router.get("/featured", async (req, res) => {
 router.get("/featured/:id", async (req, res) => {
     res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
     try {
-        let result = await db.executeQuery("SELECT * FROM featured WHERE id = ?", [req.params.id]);
+        let result = await db.executeQuery("SELECT * FROM featured WHERE product_id = ?", [req.params.id]);
         res.send(result);
     } catch (e) {
         // console.log(req)
