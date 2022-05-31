@@ -73,6 +73,8 @@ db.executeQuery = (query, queryParams) => {
     },
  ];
 
+ // ============================================================================================================
+
 // Endpoint to get all batteries
 router.get("/batteries", async (req, res) => {
     res.header('Access-Control-Allow-Origin', 'https://robibuilder.github.io');
@@ -155,6 +157,92 @@ router.get("/featured/:id", async (req, res) => {
     }
 });
 
+
+// ============================================================================================================
+
+// Endpoint to get all batteries
+router.get("/dev/batteries", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    let result = await db.executeQuery("SELECT * FROM batteries");
+    //res.status(200).json(result);
+    res.send(result);
+});
+
+// Endpoint to get an individual battery by ID
+router.get("/dev/batteries/:id", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    try {
+        let result = await db.executeQuery("SELECT * FROM batteries WHERE id = ?", [req.params.id]);
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
+});
+
+// Endpoint to get all tools
+//
+router.get("/dev/tools", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    try {
+        let result = await db.executeQuery("SELECT * FROM tools");
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
+});
+
+// Endpoint to get an individual tool by ID
+//
+router.get("/dev/tools/:id", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    try {
+        let result = await db.executeQuery("SELECT * FROM tools WHERE id = ?", [req.params.id]);
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
+});
+
+// Endpoint to get featured
+//
+router.get("/dev/featured", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    try {
+        let result = await db.executeQuery("SELECT * FROM featured");
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
+});
+
+// Endpoint to get an individual featured by ID
+//
+router.get("/dev/featured/:id", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    try {
+        let result = await db.executeQuery("SELECT * FROM featured WHERE id = ?", [req.params.id]);
+        res.send(result);
+    } catch (e) {
+        // console.log(req)
+        console.log(e)
+        console.log(req.body)
+        res.status(500).json({error: e})
+    }
+});
+
+// ============================================================================================================
 
 app.use('/.netlify/functions/app', router);
 module.exports = app;
